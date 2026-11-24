@@ -1,0 +1,25 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: learning-docker
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learning-docker
+
+  template:
+    metadata:
+      labels:
+        app: learning-docker
+
+    spec:
+      containers:
+        - name: learning-docker
+          image: learning-docker:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
